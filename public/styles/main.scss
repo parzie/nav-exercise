@@ -1,0 +1,494 @@
+@import "_fonts.scss";
+@import "_variables.scss";
+@import "_responsive.scss";
+@import "_animations.scss";
+/*General*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    color: $white;
+    background-color: $white;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Desktop Styles */
+
+/* For Standard and Big Desktops */
+
+#logo {
+    background: $magenta;
+    padding: $h-unit $h-unitx2 $h-unit $h-unit;
+    width: $logo-width;
+}
+
+/*hidden buttons*/
+
+#toggle-open {
+    display: none;
+}
+
+#toggle-close {
+    display: none;
+}
+
+/*float secondary navigation position*/
+
+#Dropdown_About {
+    left: 102px;
+}
+
+#Dropdown_Careers {
+    left: 215px;
+}
+
+#Dropdown_Ideas {
+    left: 349px;
+}
+
+#Dropdown_Contact {
+    left: 678px;
+}
+
+/*Nav Bar on Desktop*/
+
+#nav-bar {
+    background: $magenta;
+    font-size: 0;
+    height: $h-unitx3;
+    position: relative;
+    width: 100%;
+    z-index: 5;
+}
+
+/*Primary Navigation on Desktop*/
+
+#nav-options {
+    background: $magenta;
+    display: inline-block;
+    position: absolute;
+    vertical-align: top;
+    width: calc(100% - 132px);
+    a {
+        img {
+            display: none;
+        }
+        /*On click event */
+        &:target {
+            /*row active*/
+            background: $white;
+            color: $magenta;
+            /*shows secondary navigation (one at time)*/
+            &+.sub-nav {
+                display: block;
+            }
+            /*shows translucent mask*/
+            &~#translucent-mask {
+                display: block;
+            }
+        }
+    }
+    #{$option-tags} {
+        background: $white;
+        color: $magenta;
+    }
+}
+
+.container {
+    height: 100%;
+}
+
+.option {
+    color: $white;
+    display: inline-block;
+    font: $huge-on-option;
+    height: $h-unit;
+    line-height: $h-unit;
+    padding: $h-unit;
+    position: relative;
+}
+
+/*Secondary Navigation on Desktop */
+
+.sub-nav {
+    background: $white;
+    display: none;
+    min-width: 160px;
+    position: absolute;
+    padding: $h-half_unit 0;
+    a {
+        color: $black;
+        font: $galaxie-on-option;
+        height: $h-unitx2;
+        line-height: $h-unitx2;
+        display: block;
+        padding: 0 $h-unit;
+        text-decoration: none;
+        &:hover {
+            background-color: $light-grey;
+            color: $magenta;
+        }
+    }
+}
+
+/*Translucent Mask on Desktop*/
+
+#translucent-mask {
+    display: none;
+    position: absolute;
+}
+
+#translucent-mask .close::before {
+    background: $translucent-black;
+    content: "";
+    cursor: default;
+    left: 0;
+    top: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    -webkit-animation-name: opacity-on;
+    -webkit-animation-duration: 0.5s;
+    z-index: -1;
+}
+
+/* Hero Section on Desktop */
+
+.hero {
+    position: relative;
+    z-index: -1;
+    img {
+        height: auto;
+        max-height: 640px;
+        width: 100%;
+    }
+    h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        font: $huge-H1;
+        text-align: center;
+        line-height: 110%;
+        letter-spacing: 1px;
+        width: 80%;
+    }
+}
+
+/* Text Section on Desktop*/
+
+.main-text {
+    p {
+        font: $galaxie-on-p;
+        max-width: 968px;
+        text-align: justify;
+        color: $black-grey;
+        margin: 60px auto 60px auto;
+    }
+}
+
+.push-items {
+    z-index: -1;
+}
+
+.mobile-copyright {
+    display: none;
+}
+
+/* Media Screen to 959px width screen */
+
+/* For Small Desktops and Tablets*/
+
+@include medium {
+    #Dropdown_About {
+        left: 78px;
+    }
+    #Dropdown_Careers {
+        left: 166px;
+    }
+    #Dropdown_Ideas {
+        left: 271px;
+    }
+    #Dropdown_Contact {
+        left: 526px;
+    }
+    #nav-options .option {
+        font-size: 18px;
+        padding: $h-unit 16px;
+    }
+    .main-text {
+        width: 100%;
+        margin-top: 50px;
+    }
+    .main-text p {
+        padding: 0 $h-unit;
+    }
+}
+
+/* Media Screen to 767px width screen */
+
+/* For Mobiles */
+
+@include small {
+    /*buttons */
+    #toggle-open {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        cursor: pointer
+    }
+    #toggle-close {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        cursor: pointer;
+    }
+    #logo {
+        width: $logo-width-mobile;
+        position: absolute;
+        top: $h-unit-mobile;
+        bottom: $h-unit-mobile;
+        height: $h-unit-mobile;
+        padding: 0;
+    }
+    /*Primary Navigation on Mobile*/
+    #nav-bar {
+        height: 60px;
+        position: static;
+    }
+    #nav-options {
+        display: none;
+        top: $h-unitx3;
+        position: absolute;
+        width: 80vw;
+        height: 100%;
+        background-color: $white;
+        a {
+            color: $black;
+            display: block;
+            position: relative;
+            padding: $h-half-unit $h-unit;
+            height: $h-unit;
+            line-height: $h-unit;
+            font: $huge-on-option;
+            img {
+                display: block;
+                position: absolute;
+                top: $h-half-unit;
+                right: $h-unit;
+                width: 22px;
+                -webkit-transition: -webkit-transform 1s;
+                transition: transform 1s;
+            }
+            /*Navigation on click event */
+            &:target {
+                color: $black;
+                /* pink row animation */
+                >img {
+                    -webkit-transform: rotate(180deg);
+                    transform: rotate(180deg);
+                }
+                /*keep Desktop translucent hide*/
+                ~#translucent-mask {
+                    display: none;
+                }
+            }
+        }
+        #{$option-tags} {
+            color: $black;
+            text-decoration: none;
+            background-color: #eee;
+        }
+        /*Secondary Navigation on Mobile*/
+        .sub-nav {
+            padding: 0;
+            position: initial;
+            a {
+                font: $galaxie-on-option;
+                &:hover {
+                    color: $magenta;
+                }
+            }
+        }
+    }
+    /*Hero on Mobile*/
+    .hero {
+        img {
+            min-height: 240px;
+            object-fit: cover;
+        }
+        h1 {
+            position: relative;
+            margin: 0;
+            margin-top: 50px;
+            color: $black;
+            top: 0;
+            left: 0;
+            padding: 0 $h-unit;
+            -webkit-transform: none;
+            transform: none;
+            font: $huge-H1-mobile;
+            text-align: left;
+            line-height: 110%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
+    /*Text Section on Mobile*/
+    .main-text {
+        width: 100%;
+        margin-top: 50px;
+        p {
+            padding: 0 $h-unit;
+            font: $galaxie-on-option;
+            line-height: $h-unit;
+        }
+    }
+    /*copyright*/
+    .mobile-copyright {
+        display: block;
+        font: $copyright;
+        text-align: left;
+        color: $black;
+        padding: 17px $h-unit 17px $h-unit;
+        bottom: 0;
+        position: absolute;
+        bottom: -90px;
+    }
+    /* Menu Animations when opens/close */
+    //Close Icon
+    .close-show {
+        opacity: 1;
+        -webkit-animation-name: on-show-close-icon;
+        -webkit-animation-duration: 1s;
+        animation-name: on-show-close-icon;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+    .close-dismiss {
+        opacity: 0;
+        -webkit-animation-name: on-dismiss-close-icon;
+        -webkit-animation-duration: 1s;
+        animation-name: on-dismiss-close-icon;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+    /*Hamburger Icon*/
+    .menu-dismiss {
+        opacity: 0;
+        -webkit-animation-name: on-dismiss-menu-icon;
+        -webkit-animation-duration: 1s;
+        animation-name: on-dismiss-menu-icon;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+    .menu-show {
+        opacity: 1;
+        -webkit-animation-name: on-show-menu-icon;
+        -webkit-animation-duration: 1s;
+        animation-name: on-show-menu-icon;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+    /*Huge Logo on Mobile*/
+    .push-logo {
+        left: 24px;
+        -webkit-animation-name: push-logo;
+        -webkit-animation-duration: 1s;
+        animation-name: push-logo;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+    .push-logo-reverse {
+        left: -80vw;
+        -webkit-animation-name: push-logo-reverse;
+        -webkit-animation-duration: 1s;
+        animation-name: push-logo-reverse;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+    /*Push Animation for Content*/
+    .pushed {
+        position: absolute;
+        left: 80vw;
+        width: 100vw;
+        -webkit-animation-name: push;
+        -webkit-animation-duration: 1s;
+        animation-name: push;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+    .pushed-reverse {
+        position: absolute;
+        left: 0vw;
+        width: 100vw;
+        -webkit-animation-name: push-reverse;
+        -webkit-animation-duration: 1s;
+        animation-name: push-reverse;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+    /*Push Animation for Options*/
+    .push-options {
+        display: block !important;
+        left: 0;
+        -webkit-animation-name: push-options;
+        -webkit-animation-duration: 1s;
+        animation-name: push-options;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+    .push-options-reverse {
+        left: -80vw;
+        -webkit-animation-name: push-options-reverse;
+        -webkit-animation-duration: 1s;
+        animation-name: push-options-reverserotation;
+        animation-duration: 1s;
+        animation-timing-function: ease-in-out;
+    }
+    /*Translucent Mask on Mobile*/
+    .mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: $translucent-black;
+        -webkit-animation-name: opacity-on;
+        -webkit-animation-duration: 0.5s;
+        animation-name: opacity-on;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in-out;
+    }
+    .no-mask {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        background: $translucent-black;
+        -webkit-animation-name: opacity-off;
+        -webkit-animation-duration: 0.5s;
+        animation-name: opacity-off;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in-out;
+        z-index: -1;
+    }
+}

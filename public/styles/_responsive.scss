@@ -1,0 +1,23 @@
+$spacing: 25px;
+$tablet-min-width: 768px;
+$desktop-content-min-width: 960px;
+$desktop-min-width: $desktop-content-min-width + 50px;
+$desktop-max-width: 1280px;
+
+@mixin small {
+  @media (max-width: #{$tablet-min-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media (min-width: #{$tablet-min-width}) and (max-width: #{$desktop-min-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin from-medium {
+  @media (max-width: #{$desktop-min-width - 1px}) {
+    @content;
+  }
+}
